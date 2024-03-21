@@ -17,8 +17,7 @@ export class Plans {
   price: number;
   @IsNumber()
   priceEn: number;
-  @IsNumber()
-  priceZh: number;
+  priceZh?: number;
 }
 
 // Statuses
