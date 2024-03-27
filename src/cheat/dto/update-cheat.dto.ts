@@ -12,7 +12,8 @@ import {
 export class Plans {
   @IsNumber()
   deadline: number;
-
+  @IsString()
+  link: string;
   @IsNumber()
   price: number;
   @IsNumber()

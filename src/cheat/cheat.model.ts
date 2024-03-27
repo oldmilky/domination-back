@@ -8,7 +8,8 @@ export interface CheatModel extends Base {}
 export class Plans {
   @prop()
   deadline: number;
-
+  @prop()
+  link: string;
   @prop()
   price: number;
   @prop()
