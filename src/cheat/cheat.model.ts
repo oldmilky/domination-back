@@ -66,6 +66,8 @@ export class CheatModel extends TimeStamps {
   @prop()
   gamemode?: string;
   @prop()
+  gamemodeEn?: string;
+  @prop()
   cpu?: string;
   @prop()
   client?: string;
@@ -78,9 +80,15 @@ export class CheatModel extends TimeStamps {
   @prop()
   flash?: string;
   @prop()
+  flashEn?: string;
+  @prop()
   record?: string;
   @prop()
+  recordEn?: string;
+  @prop()
   spoofer?: string;
+  @prop()
+  spooferEn?: string;
 
   @prop()
   aimbot?: ButtonPair[];

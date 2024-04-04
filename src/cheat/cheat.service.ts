@@ -50,14 +50,6 @@ export class CheatService {
     return doc;
   }
 
-  // async byGames(gameIds: Types.ObjectId[]) {
-  //   const doc = await this.cheatModel
-  //     .find({ cheats: { $in: gameIds } })
-  //     .exec();
-  //   if (!doc) throw new NotFoundException('Cheats not found');
-  //   return doc;
-  // }
-
   async getMostPopular() {
     return this.cheatModel
       .find({ countOpened: { $gt: 0 } })
@@ -108,14 +100,18 @@ export class CheatService {
       level: Level.legit,
       os: '',
       gamemode: '',
+      gamemodeEn: '',
       cpu: '',
       client: '',
       disk: '',
       bios: '',
       gpu: '',
       flash: '',
+      flashEn: '',
       record: '',
+      recordEn: '',
       spoofer: '',
+      spooferEn: '',
       aimbot: [],
       visuals: [],
       loot: [],

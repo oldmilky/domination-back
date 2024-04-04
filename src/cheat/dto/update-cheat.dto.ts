@@ -81,14 +81,18 @@ export class UpdateCheatDto {
 
   os?: string;
   gamemode?: string;
+  gamemodeEn?: string;
   cpu?: string;
   client?: string;
   disk?: string;
   bios?: string;
   gpu?: string;
   flash?: string;
+  flashEn?: string;
   record?: string;
+  recordEn?: string;
   spoofer?: string;
+  spooferEn?: string;
 
   @IsOptional()
   @Type(() => ButtonPair)

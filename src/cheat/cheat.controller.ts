@@ -31,13 +31,6 @@ export class CheatController {
     return this.cheatService.byGame(gameId);
   }
 
-  // @UsePipes(new ValidationPipe())
-  // @Post('by-games')
-  // @HttpCode(200)
-  // async byGames(@Body('gameIds') gameIds: Types.ObjectId[]) {
-  //   return this.cheatService.byGames(gameIds);
-  // }
-
   @Get()
   async getAll(@Query('searchTerm') searchTerm?: string) {
     return this.cheatService.getAll(searchTerm);
