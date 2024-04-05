@@ -11,6 +11,8 @@ export class Plans {
   @prop()
   link: string;
   @prop()
+  linkEn?: string;
+  @prop()
   price: number;
   @prop()
   priceEn?: number;

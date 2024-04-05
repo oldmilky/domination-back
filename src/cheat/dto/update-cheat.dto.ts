@@ -14,6 +14,9 @@ export class Plans {
   deadline: number;
   @IsString()
   link: string;
+  @IsOptional()
+  @IsString()
+  linkEn: string;
   @IsNumber()
   price: number;
   @IsNumber()
