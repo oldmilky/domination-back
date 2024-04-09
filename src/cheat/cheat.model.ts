@@ -19,7 +19,7 @@ export class Plans {
   @prop()
   priceZh?: number;
   @prop()
-  free?: number;
+  free?: string;
 }
 
 export class ButtonPair {
