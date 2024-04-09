@@ -22,6 +22,7 @@ export class Plans {
   @IsNumber()
   priceEn: number;
   priceZh?: number;
+  free?: number;
 }
 
 // Statuses

@@ -18,6 +18,8 @@ export class Plans {
   priceEn?: number;
   @prop()
   priceZh?: number;
+  @prop()
+  free?: number;
 }
 
 export class ButtonPair {
