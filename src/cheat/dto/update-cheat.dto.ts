@@ -30,6 +30,7 @@ export enum Status {
   undetected = 'undetected',
   useAtOwnRisk = 'use at own risk',
   onUpdate = 'on update',
+  retired = 'retired',
 }
 
 // Type
