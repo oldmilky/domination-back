@@ -146,4 +146,5 @@ export class UpdateCheatDto {
   hot?: boolean;
   popularHome?: boolean;
   sort?: number;
+  ourProduct?: boolean;
 }

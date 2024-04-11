@@ -136,4 +136,6 @@ export class CheatModel extends TimeStamps {
   popularHome?: boolean;
   @prop({ default: false })
   hot?: boolean;
+  @prop({ default: false })
+  ourProduct?: boolean;
 }
