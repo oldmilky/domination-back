@@ -62,7 +62,7 @@ export class UserController {
     @Param('id', IdValidationPipe) _id: string,
     @Body() dto: UpdateUserDto,
   ) {
-    return this.userService.updateProfile(_id, dto);
+    return this.userService.adminUpdateUser(_id, dto);
   }
 
   @Delete(':id')

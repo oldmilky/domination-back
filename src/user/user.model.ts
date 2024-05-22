@@ -17,6 +17,6 @@ export class UserModel extends TimeStamps {
   @prop({ default: false })
   isAdmin?: boolean;
 
-    @prop({ default: [], ref: () => CheatModel })
-    favorites?: Ref<CheatModel>[];
+  @prop({ default: [], ref: () => CheatModel })
+  favorites?: Ref<CheatModel>[];
 }

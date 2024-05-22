@@ -1,5 +1,8 @@
 import { Injectable } from '@nestjs/common';
-import { BadRequestException, NotFoundException } from '@nestjs/common/exceptions';
+import {
+  BadRequestException,
+  NotFoundException,
+} from '@nestjs/common/exceptions';
 import { InjectModel } from 'nestjs-typegoose';
 import { UserModel } from './user.model';
 import { ModelType } from '@typegoose/typegoose/lib/types';
@@ -56,6 +59,30 @@ export class UserService {
     await user.save();
 
     return;
+  }
+
+  async adminUpdateUser(_id: string, dto: UpdateUserDto) {
+    const user = await this.byId(_id);
+
+    const isSameUser = await this.UserModel.findOne({ email: dto.email });
+    if (isSameUser && String(_id) !== String(isSameUser._id)) {
+      throw new NotFoundException('Email busy');
+    }
+
+    if (dto.password) {
+      const salt = await genSalt(10);
+      user.password = await hash(dto.password, salt);
+    }
+
+    user.email = dto.email;
+    if (dto.nickname !== undefined) {
+      user.nickname = dto.nickname;
+    }
+    if (dto.isAdmin !== undefined) {
+      user.isAdmin = dto.isAdmin;
+    }
+
+    await user.save();
   }
 
   async getCount() {
