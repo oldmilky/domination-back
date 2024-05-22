@@ -6,4 +6,5 @@ export class UpdateUserDto {
   nickname?: string;
   password?: string;
   isAdmin?: boolean;
+  currentPassword?: string;
 }

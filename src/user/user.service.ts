@@ -1,11 +1,18 @@
 import { Injectable } from '@nestjs/common';
-import { NotFoundException } from '@nestjs/common/exceptions';
+import { BadRequestException, NotFoundException } from '@nestjs/common/exceptions';
 import { InjectModel } from 'nestjs-typegoose';
 import { UserModel } from './user.model';
 import { ModelType } from '@typegoose/typegoose/lib/types';
 import { UpdateUserDto } from './dto/update-user.dto';
-import { genSalt, hash } from 'bcryptjs';
+import { compare, genSalt, hash } from 'bcryptjs';
 import { Types } from 'mongoose';
+
+export async function comparePasswords(
+  plainTextPassword: string,
+  hashedPassword: string,
+): Promise<boolean> {
+  return compare(plainTextPassword, hashedPassword);
+}
 
 @Injectable()
 export class UserService {
@@ -27,7 +34,15 @@ export class UserService {
     if (isSameUser && String(_id) !== String(isSameUser._id))
       throw new NotFoundException('Email busy');
 
-    if (dto.password) {
+    if (dto.currentPassword && dto.password) {
+      const isMatch = await comparePasswords(
+        dto.currentPassword,
+        user.password,
+      );
+      if (!isMatch) {
+        throw new BadRequestException('Current password does not match');
+      }
+
       const salt = await genSalt(10);
       user.password = await hash(dto.password, salt);
     }
