@@ -9,6 +9,8 @@ import { AuthModule } from './auth/auth.module';
 import { FileModule } from './file/file.module';
 import { GameModule } from './game/game.module';
 import { CheatModule } from './cheat/cheat.module';
+import { KeysService } from './keys/keys.service';
+import { KeysModule } from './keys/keys.module';
 
 @Module({
   imports: [
@@ -23,6 +25,7 @@ import { CheatModule } from './cheat/cheat.module';
     FileModule,
     GameModule,
     CheatModule,
+    KeysModule,
   ],
   controllers: [AppController],
   providers: [AppService],

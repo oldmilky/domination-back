@@ -17,6 +17,6 @@ import { CheatModel } from './cheat.model';
   ],
   controllers: [CheatController],
   providers: [CheatService],
-  exports: [CheatService],
+  exports: [CheatService, TypegooseModule],
 })
 export class CheatModule {}
