@@ -6,7 +6,7 @@ import {
 import { InjectModel } from 'nestjs-typegoose';
 import { UserModel } from './user.model';
 import { ModelType } from '@typegoose/typegoose/lib/types';
-import { UpdateUserDto } from './dto/update-user.dto';
+import { IssuedKeyDto, UpdateUserDto } from './dto/update-user.dto';
 import { compare, genSalt, hash } from 'bcryptjs';
 import { Types } from 'mongoose';
 
@@ -55,10 +55,20 @@ export class UserService {
       user.nickname = dto.nickname;
     }
     if (dto.isAdmin || dto.isAdmin === false) user.isAdmin = dto.isAdmin;
+    if (dto.issuedKeys) user.issuedKeys = dto.issuedKeys;
 
     await user.save();
 
     return;
+  }
+
+  async addIssuedKey(userId: string, issuedKey: IssuedKeyDto) {
+    const user = await this.byId(userId);
+    if (!user.issuedKeys) {
+      user.issuedKeys = [];
+    }
+    user.issuedKeys.push(issuedKey);
+    await user.save();
   }
 
   async adminUpdateUser(_id: string, dto: UpdateUserDto) {

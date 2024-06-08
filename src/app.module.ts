@@ -1,5 +1,4 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypegooseModule } from 'nestjs-typegoose';
@@ -9,8 +8,9 @@ import { AuthModule } from './auth/auth.module';
 import { FileModule } from './file/file.module';
 import { GameModule } from './game/game.module';
 import { CheatModule } from './cheat/cheat.module';
-import { KeysService } from './keys/keys.service';
 import { KeysModule } from './keys/keys.module';
+import { UserKeyModule } from './user-key/user-key.module';
+import { AppController } from './app.controller';
 
 @Module({
   imports: [
@@ -26,6 +26,7 @@ import { KeysModule } from './keys/keys.module';
     GameModule,
     CheatModule,
     KeysModule,
+    UserKeyModule,
   ],
   controllers: [AppController],
   providers: [AppService],

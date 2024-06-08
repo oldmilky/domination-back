@@ -1,4 +1,12 @@
-import { IsEmail, IsString } from 'class-validator';
+import { IsEmail, IsOptional, IsString } from 'class-validator';
+
+export class IssuedKeyDto {
+  @IsString()
+  cheatSlug: string;
+
+  @IsString()
+  key: string;
+}
 
 export class UpdateUserDto {
   @IsEmail()
@@ -7,4 +15,7 @@ export class UpdateUserDto {
   password?: string;
   isAdmin?: boolean;
   currentPassword?: string;
+
+  @IsOptional()
+  issuedKeys?: IssuedKeyDto[];
 }

@@ -19,6 +19,6 @@ import { CheatModule } from 'src/cheat/cheat.module';
   ],
   controllers: [KeysController],
   providers: [KeysService],
-  exports: [KeysService],
+  exports: [KeysService, TypegooseModule],
 })
 export class KeysModule {}

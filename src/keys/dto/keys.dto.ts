@@ -1,7 +1,11 @@
 import { Type } from 'class-transformer';
-import { IsArray, IsOptional, IsString } from 'class-validator';
+import { IsArray, IsMongoId, IsOptional, IsString } from 'class-validator';
+import { Types } from 'mongoose';
 
 class Key {
+  @IsMongoId()
+  _id: Types.ObjectId;
+
   @IsString()
   key: string;
 }

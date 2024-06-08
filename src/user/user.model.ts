@@ -4,6 +4,14 @@ import { CheatModel } from 'src/cheat/cheat.model';
 
 export interface UserModel extends Base {}
 
+export class IssuedKey {
+  @prop()
+  cheatSlug: string;
+
+  @prop()
+  key: string;
+}
+
 export class UserModel extends TimeStamps {
   @prop({ unique: true })
   email: string;
@@ -19,4 +27,7 @@ export class UserModel extends TimeStamps {
 
   @prop({ default: [], ref: () => CheatModel })
   favorites?: Ref<CheatModel>[];
+
+  @prop({ type: () => [IssuedKey], _id: false })
+  issuedKeys?: IssuedKey[];
 }
