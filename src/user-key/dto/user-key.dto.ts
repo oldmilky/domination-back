@@ -1,4 +1,4 @@
-import { IsMongoId, IsString } from 'class-validator';
+import { IsMongoId, IsNumber, IsString } from 'class-validator';
 
 export class IssueKeyDto {
   @IsMongoId()
@@ -6,4 +6,7 @@ export class IssueKeyDto {
 
   @IsString()
   cheatSlug: string;
+
+  @IsNumber()
+  deadline: number;
 }

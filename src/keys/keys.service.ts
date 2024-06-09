@@ -53,31 +53,44 @@ export class KeysService {
   }
 
   async update(id: string, dto: KeysDto) {
-    const cheats = await this.cheatModel.find({
-      slug: { $in: dto.cheatSlugs },
-    }).exec();
+    const cheats = await this.cheatModel
+      .find({
+        slug: { $in: dto.cheatSlugs },
+      })
+      .exec();
 
     if (!cheats || cheats.length !== dto.cheatSlugs.length) {
       const foundSlugs = cheats.map((cheat) => cheat.slug);
-      const notFoundSlugs = dto.cheatSlugs.filter((slug) => !foundSlugs.includes(slug));
-      throw new NotFoundException(`One or more cheats not found: ${notFoundSlugs.join(', ')}`);
+      const notFoundSlugs = dto.cheatSlugs.filter(
+        (slug) => !foundSlugs.includes(slug),
+      );
+      throw new NotFoundException(
+        `One or more cheats not found: ${notFoundSlugs.join(', ')}`,
+      );
+    }
+
+    const validDeadlines = cheats.flatMap((cheat) =>
+      cheat.plans.map((plan) => plan.deadline),
+    );
+    for (const key of dto.keys) {
+      if (!validDeadlines.includes(key.deadline)) {
+        throw new NotFoundException(`Invalid deadline: ${key.deadline}`);
+      }
     }
 
     const updateData: Partial<KeysModel> = {
       cheat: cheats.map((cheat) => cheat._id),
       text: dto.text,
+      keys: dto.keys,
     };
 
     if (dto.keys) {
       updateData.keys = dto.keys;
     }
 
-    const updatedKey = await this.keyModel.findByIdAndUpdate(
-      id,
-      updateData,
-      { new: true },
-    ).exec();
-
+    const updatedKey = await this.keyModel
+      .findByIdAndUpdate(id, updateData, { new: true })
+      .exec();
     if (!updatedKey) throw new NotFoundException('Key not found');
     return updatedKey;
   }

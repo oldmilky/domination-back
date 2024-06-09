@@ -1,5 +1,5 @@
 import { Type } from 'class-transformer';
-import { IsArray, IsMongoId, IsOptional, IsString } from 'class-validator';
+import { IsArray, IsMongoId, IsNumber, IsOptional, IsString } from 'class-validator';
 import { Types } from 'mongoose';
 
 class Key {
@@ -8,6 +8,9 @@ class Key {
 
   @IsString()
   key: string;
+
+  @IsNumber()
+  deadline: number;
 }
 
 export class KeysDto {

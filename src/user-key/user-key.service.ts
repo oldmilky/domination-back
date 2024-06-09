@@ -18,11 +18,15 @@ export class UserKeyService {
   ) {}
 
   async issueRandomKey(issueKeyDto: IssueKeyDto) {
-    const { userId, cheatSlug } = issueKeyDto;
+    const { userId, cheatSlug, deadline } = issueKeyDto;
 
     // Найти cheat по slug
     const cheat = await this.cheatModel.findOne({ slug: cheatSlug }).exec();
     if (!cheat) throw new NotFoundException('Cheat not found');
+
+    // Проверка наличия подходящего срока действия
+    const validPlan = cheat.plans.find(plan => plan.deadline === deadline);
+    if (!validPlan) throw new NotFoundException(`No plan with deadline ${deadline} found`);
 
     // Найти все ключи, связанные с cheat
     const keysDocument = await this.keyModel.findOne({ cheat: cheat._id }).exec();
@@ -30,14 +34,15 @@ export class UserKeyService {
       throw new NotFoundException('No keys available for this cheat');
 
     // Выбрать случайный ключ
-    const randomKey = keysDocument.keys[Math.floor(Math.random() * keysDocument.keys.length)];
+    const randomKey = keysDocument.keys.find(key => key.deadline === deadline);
+    if (!randomKey) throw new NotFoundException('No keys available for the specified deadline');
 
     // Удалить выданный ключ из массива ключей
     keysDocument.keys = keysDocument.keys.filter(key => !key._id.equals(randomKey._id));
     await keysDocument.save();
 
     // Создать запись в профиле пользователя
-    await this.userService.addIssuedKey(userId, { cheatSlug, key: randomKey.key });
+    await this.userService.addIssuedKey(userId, { cheatSlug, key: randomKey.key, deadline });
 
     return randomKey;
   }

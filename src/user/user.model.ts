@@ -10,6 +10,9 @@ export class IssuedKey {
 
   @prop()
   key: string;
+
+  @prop()
+  deadline: number;
 }
 
 export class UserModel extends TimeStamps {

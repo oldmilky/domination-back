@@ -62,7 +62,7 @@ export class UserService {
     return;
   }
 
-  async addIssuedKey(userId: string, issuedKey: IssuedKeyDto) {
+  async addIssuedKey(userId: string, issuedKey: { cheatSlug: string, key: string, deadline: number }) {
     const user = await this.byId(userId);
     if (!user.issuedKeys) {
       user.issuedKeys = [];

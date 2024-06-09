@@ -11,6 +11,9 @@ export class Key {
 
   @prop()
   key: string;
+
+  @prop()
+  deadline: number;
 }
 
 export class KeysModel extends TimeStamps {

@@ -1,4 +1,4 @@
-import { IsEmail, IsOptional, IsString } from 'class-validator';
+import { IsEmail, IsNumber, IsOptional, IsString } from 'class-validator';
 
 export class IssuedKeyDto {
   @IsString()
@@ -6,6 +6,9 @@ export class IssuedKeyDto {
 
   @IsString()
   key: string;
+
+  @IsNumber()
+  deadline: number;
 }
 
 export class UpdateUserDto {
