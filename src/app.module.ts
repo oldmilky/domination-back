@@ -11,6 +11,8 @@ import { CheatModule } from './cheat/cheat.module';
 import { KeysModule } from './keys/keys.module';
 import { UserKeyModule } from './user-key/user-key.module';
 import { AppController } from './app.controller';
+import { PaymentModule } from './payment/payment.module';
+import { BlogModule } from './blog/blog.module';
 
 @Module({
   imports: [
@@ -27,6 +29,8 @@ import { AppController } from './app.controller';
     CheatModule,
     KeysModule,
     UserKeyModule,
+    PaymentModule,
+    BlogModule,
   ],
   controllers: [AppController],
   providers: [AppService],

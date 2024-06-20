@@ -11,6 +11,14 @@ export class IssuedKeyDto {
   deadline: number;
 }
 
+export class PaymentOrdersDto {
+  @IsString()
+  orderID: string;
+
+  @IsString()
+  paymentService: string;
+}
+
 export class UpdateUserDto {
   @IsEmail()
   email: string;
@@ -21,4 +29,7 @@ export class UpdateUserDto {
 
   @IsOptional()
   issuedKeys?: IssuedKeyDto[];
+
+  @IsOptional()
+  paymentOrdersDto?: PaymentOrdersDto[];
 }

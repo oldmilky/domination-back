@@ -15,6 +15,14 @@ export class IssuedKey {
   deadline: number;
 }
 
+export class PaymentOrders {
+  @prop()
+  orderID: string;
+
+  @prop()
+  paymentService: string;
+}
+
 export class UserModel extends TimeStamps {
   @prop({ unique: true })
   email: string;
@@ -33,4 +41,7 @@ export class UserModel extends TimeStamps {
 
   @prop({ type: () => [IssuedKey], _id: false })
   issuedKeys?: IssuedKey[];
+
+  @prop({ type: () => [PaymentOrders], _id: false })
+  paymentOrders?: PaymentOrders[];
 }
