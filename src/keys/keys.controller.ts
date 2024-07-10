@@ -57,4 +57,11 @@ export class KeysController {
   async delete(@Param('id', IdValidationPipe) id: string) {
     return this.keysService.delete(id);
   }
+
+  @Get('has-keys/:cheatSlug')
+  // @Auth('admin') // Or any appropriate role
+  async hasKeys(@Param('cheatSlug') cheatSlug: string) {
+    const hasKeys = await this.keysService.hasKeys(cheatSlug);
+    return { hasKeys };
+  }
 }

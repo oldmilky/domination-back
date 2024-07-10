@@ -100,4 +100,12 @@ export class KeysService {
     if (!deletedKey) throw new NotFoundException('Key not found');
     return deletedKey;
   }
+
+  async hasKeys(cheatSlug: string): Promise<boolean> {
+    const cheat = await this.cheatModel.findOne({ slug: cheatSlug }).exec();
+    if (!cheat) return false;
+
+    const keysDocument = await this.keyModel.findOne({ cheat: cheat._id }).exec();
+    return keysDocument && keysDocument.keys.length > 0;
+  }
 }
