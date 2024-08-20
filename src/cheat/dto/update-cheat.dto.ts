@@ -21,7 +21,6 @@ export class Plans {
   price: number;
   @IsNumber()
   priceEn: number;
-  priceZh?: number;
   free?: string;
 }
 
@@ -59,19 +58,13 @@ export class UpdateCheatDto {
   @IsString()
   descEn: string;
   @IsString()
-  descZh: string;
-  @IsString()
   seoTitle: string;
   @IsString()
   seoTitleEn: string;
   @IsString()
-  seoTitleZh: string;
-  @IsString()
   seoDesc: string;
   @IsString()
   seoDescEn: string;
-  @IsString()
-  seoDescZh: string;
 
   @IsArray()
   @IsString({ each: true })

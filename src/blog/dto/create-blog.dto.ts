@@ -6,8 +6,6 @@ class ButtonPair {
   text: string;
   @IsString()
   textEn: string;
-  @IsString()
-  textZh: string;
   image?: string;
   video?: string;
 }
@@ -18,27 +16,19 @@ export class CreateBlogDto {
   @IsString()
   titleEn: string;
   @IsString()
-  titleZh: string;
-  @IsString()
   slug: string;
   @IsString()
   subtitle: string;
   @IsString()
   subtitleEn: string;
   @IsString()
-  subtitleZh: string;
-  @IsString()
   seoTitle: string;
   @IsString()
   seoTitleEn: string;
   @IsString()
-  seoTitleZh: string;
-  @IsString()
   desc: string;
   @IsString()
   descEn: string;
-  @IsString()
-  descZh: string;
   @IsString()
   date: string;
   @IsString()

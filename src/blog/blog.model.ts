@@ -8,8 +8,6 @@ export class ButtonPair {
   text: string;
   @prop()
   textEn: string;
-  @prop()
-  textZh: string;
   image?: string;
   video?: string;
 }
@@ -22,25 +20,17 @@ export class BlogModel extends TimeStamps {
   @prop()
   titleEn: string;
   @prop()
-  titleZh: string;
-  @prop()
   subtitle: string;
   @prop()
   subtitleEn: string;
-  @prop()
-  subtitleZh: string;
   @prop()
   seoTitle: string;
   @prop()
   seoTitleEn: string;
   @prop()
-  seoTitleZh: string;
-  @prop()
   desc: string;
   @prop()
   descEn: string;
-  @prop()
-  descZh: string;
   @prop()
   date: string;
   @prop()

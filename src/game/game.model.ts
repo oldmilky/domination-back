@@ -13,19 +13,13 @@ export class GameModel extends TimeStamps {
   @prop()
   descEn: string;
   @prop()
-  descZh: string;
-  @prop()
   seoTitle: string;
   @prop()
   seoTitleEn: string;
   @prop()
-  seoTitleZh: string;
-  @prop()
   seoDesc: string;
   @prop()
   seoDescEn: string;
-  @prop()
-  seoDescZh: string;
   @prop()
   sort?: number;
   @prop()

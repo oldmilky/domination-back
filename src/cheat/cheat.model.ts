@@ -17,8 +17,6 @@ export class Plans {
   @prop()
   priceEn?: number;
   @prop()
-  priceZh?: number;
-  @prop()
   free?: string;
 }
 
@@ -39,19 +37,13 @@ export class CheatModel extends TimeStamps {
   @prop()
   descEn: string;
   @prop()
-  descZh: string;
-  @prop()
   seoTitle: string;
   @prop()
   seoTitleEn: string;
   @prop()
-  seoTitleZh: string;
-  @prop()
   seoDesc: string;
   @prop()
   seoDescEn: string;
-  @prop()
-  seoDescZh: string;
 
   @prop({ ref: () => GameModel })
   game: Ref<GameModel>[];
