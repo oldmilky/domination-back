@@ -85,6 +85,10 @@ export class CheatModel extends TimeStamps {
   spoofer?: string;
   @prop()
   spooferEn?: string;
+  @prop()
+  info?: string;
+  @prop()
+  infoEn?: string;
 
   @prop()
   aimbot?: ButtonPair[];

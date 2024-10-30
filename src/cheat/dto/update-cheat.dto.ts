@@ -91,6 +91,8 @@ export class UpdateCheatDto {
   recordEn?: string;
   spoofer?: string;
   spooferEn?: string;
+  info?: string;
+  infoEn?: string;
 
   @IsOptional()
   @Type(() => ButtonPair)

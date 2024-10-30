@@ -109,6 +109,8 @@ export class CheatService {
       recordEn: '',
       spoofer: '',
       spooferEn: '',
+      info: '',
+      infoEn: '',
       aimbot: [],
       visuals: [],
       loot: [],
