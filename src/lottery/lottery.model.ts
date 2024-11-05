@@ -14,11 +14,9 @@ export class ButtonPair {
 
 export class Button {
   @prop()
-  vk: string;
+  text?: string;
   @prop()
-  discord: string;
-  @prop()
-  telegram: string;
+  link?: string;
 }
 
 export class LotteryModel extends TimeStamps {

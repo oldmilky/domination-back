@@ -12,11 +12,9 @@ class ButtonPair {
 
 class Button {
   @IsString()
-  vk?: string;
+  text?: string;
   @IsString()
-  telegram?: string;
-  @IsString()
-  discord?: string;
+  link?: string;
 }
 
 export class CreateLotteryDto {
