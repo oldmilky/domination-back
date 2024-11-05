@@ -13,6 +13,7 @@ import { UserKeyModule } from './user-key/user-key.module';
 import { AppController } from './app.controller';
 import { PaymentModule } from './payment/payment.module';
 import { BlogModule } from './blog/blog.module';
+import { LotteryModule } from './lottery/lottery.module';
 
 @Module({
   imports: [
@@ -31,6 +32,7 @@ import { BlogModule } from './blog/blog.module';
     UserKeyModule,
     PaymentModule,
     BlogModule,
+    LotteryModule,
   ],
   controllers: [AppController],
   providers: [AppService],
