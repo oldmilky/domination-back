@@ -62,6 +62,7 @@ export class LotteryService {
       author: '',
       texts: [],
       button: [],
+      imageSlider: '',
     };
     const lottery = await this.lotteryModel.create(defaultValue);
     return lottery._id;

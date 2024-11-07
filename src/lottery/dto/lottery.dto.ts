@@ -14,6 +14,8 @@ class Button {
   @IsString()
   text?: string;
   @IsString()
+  textEn?: string;
+  @IsString()
   link?: string;
 }
 
@@ -48,4 +50,6 @@ export class CreateLotteryDto {
   @Type(() => ButtonPair)
   @IsArray()
   button: Button[];
+
+  imageSlider?: string;
 }

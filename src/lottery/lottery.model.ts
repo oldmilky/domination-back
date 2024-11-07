@@ -16,6 +16,8 @@ export class Button {
   @prop()
   text?: string;
   @prop()
+  textEn?: string;
+  @prop()
   link?: string;
 }
 
@@ -48,4 +50,7 @@ export class LotteryModel extends TimeStamps {
   image?: string;
   @prop()
   button: Button[];
+
+  @prop()
+  imageSlider?: string;
 }
